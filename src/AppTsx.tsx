@@ -1,15 +1,14 @@
-import { h } from 'vue'
-
-import App from './App.vue'
-
-const Ele = h('div', {
-  id: 'foo',
-  onClick: new Function("e", "console.info(e)") 
-}, h(App))
+import { h, resolveComponent } from 'vue'
 
 export default {
-  setup(props, { emit }) {
+  setup() {
+
+    const TsxComp = resolveComponent('TsxComp')
+
     return () =>
-      h(Ele)
+      h(TsxComp, {
+        title: "title",
+        count: 11
+      })
   },
 }

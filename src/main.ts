@@ -1,14 +1,16 @@
-import { createApp, h, isVNode } from 'vue'
-// import App from './App.vue'
+import { createApp } from 'vue'
 
 import './assets/main.css'
 
-// console.info(isVNode(h(App)))
+// 组件
+import App from './App.vue'
+import TsxComp from './TsxComp'
 
-// const Ele = h('div', { id: 'foo', onClick: new Function("e", "console.info(e)") }, h(App))
-
-// const Ele = h('div', null, "12345")
-
+// 最外层容器
 import AppTsx from './AppTsx'
 
-createApp(AppTsx).mount('#app')
+const app = createApp(AppTsx)
+app.component('App', App)
+app.component('TsxComp', TsxComp)
+
+app.mount('#app')
